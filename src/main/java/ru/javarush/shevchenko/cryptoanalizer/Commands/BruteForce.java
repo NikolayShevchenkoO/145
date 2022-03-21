@@ -17,7 +17,7 @@ public class BruteForce implements Brute {
     public List<String> hack(String input) {
         var alphabetSize = Constans.ALPHABET.length;
         for (int i = 1; i <= alphabetSize; i++) {
-            var encoder = new EncodeDecode(i);
+            var encoder = new EncodeDecode(i); // поправить на массив со смещением
             var result = encoder.encdec(input);  //мама, как ела?
             var resultSet = result.split(" "); //Очистка слов
             int count = 0;
