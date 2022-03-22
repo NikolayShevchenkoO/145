@@ -1,25 +1,27 @@
 package ru.javarush.shevchenko.cryptoanalizer.Commands;
 
 import ru.javarush.shevchenko.cryptoanalizer.Constans.Constans;
-import ru.javarush.shevchenko.cryptoanalizer.EncDec;
+import ru.javarush.shevchenko.cryptoanalizer.Interface.EncDec;
+import ru.javarush.shevchenko.cryptoanalizer.TaskType;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class EncodeDecode implements EncDec {
 
-
-
     private final int offset;
     private  int typeoperacion;
-
     private final Map<Character, Integer> characterIntegerMap = new HashMap<>();
 
-    public EncodeDecode(int offset) {
+    public EncodeDecode(int offset, TaskType type) {
 
-        this.offset = offset*typeoperacion; // TODO перемножим и за один раз отработаем
+        this.offset = offset; // TODO перемножим и за один раз отработаем
+        if (type==TaskType.ENCODE){
+            typeoperacion =1;
+        }
+        else if (type==TaskType.DECODE){
+            typeoperacion=-1;
+        }
         for (int i = 0; i < Constans.ALPHABET.length; i++) {
             characterIntegerMap.put(Constans.ALPHABET[i], i);
         }
@@ -40,7 +42,7 @@ public class EncodeDecode implements EncDec {
         //найтие его индекс
         if (characterIntegerMap.containsKey(ch)) {
             var index = characterIntegerMap.get(ch);
-            var total = index + offset;
+            var total = index + offset*typeoperacion;
             total = total % Constans.ALPHABET.length;
             if (total > Constans.ALPHABET.length - 1) {
                 total = total - Constans.ALPHABET.length;

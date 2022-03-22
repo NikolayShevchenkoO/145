@@ -1,4 +1,12 @@
 package ru.javarush.shevchenko.cryptoanalizer.Commands;
 
-public class FrequencyAnalizer {
+import ru.javarush.shevchenko.cryptoanalizer.Interface.Frequency;
+
+public class FrequencyAnalizer implements Frequency {
+
+
+    @Override
+    public String frequency(String input) {
+        return null;
+    }
 }
