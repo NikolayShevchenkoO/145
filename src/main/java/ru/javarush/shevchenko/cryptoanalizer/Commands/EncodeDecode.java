@@ -10,7 +10,7 @@ import java.util.Map;
 public class EncodeDecode implements EncDec {
 
     private final int offset;
-    private  int typeoperacion;
+    private  int typeoperacion=1;
     private final Map<Character, Integer> characterIntegerMap = new HashMap<>();
 
     public EncodeDecode(int offset, TaskType type) {
