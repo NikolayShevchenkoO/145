@@ -8,10 +8,10 @@ import java.util.*;
 
 public class BruteForce implements Brute {
     private final Set<String> dictionary;
-    private final Map<Integer, String> mapResult = new TreeMap<>();
+    private final TreeMap<Integer, String> mapResult = new TreeMap<>();
 
     public BruteForce() {
-        this.dictionary = Set.of("мама", "папа", "свет");// TODO поправить словарь, наименование конструктора
+        this.dictionary = Set.of("мама", "папа", "свет","жить");// TODO поправить словарь, наименование конструктора
     }
 
     @Override
@@ -20,7 +20,7 @@ public class BruteForce implements Brute {
         for (int i = 1; i <= alphabetSize; i++) {
             var encoder = new EncodeDecode(i, TaskType.DECODE); // поправить на массив со смещением
             var result = encoder.encdec(input);  //мама, как ела?
-            var resultSet = result.split(" "); //Очистка слов
+            var resultSet = result.split(" "); //Очистка слов дописать
             int count = 0;
             for (var word : resultSet) {
                 if (dictionary.contains(word)) {
@@ -30,8 +30,9 @@ public class BruteForce implements Brute {
             mapResult.put(count, result);
         }
         //решение о лучшем результате
-        var res = mapResult.values();
-        return new ArrayList<>(res);
+        var mapResultKey = mapResult.lastEntry();
+
+        return Collections.singletonList(mapResultKey.getValue());
     }
 }
 
