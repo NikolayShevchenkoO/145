@@ -1,9 +1,6 @@
 package ru.javarush.shevchenko.cryptoanalizer;
 
-import ru.javarush.shevchenko.cryptoanalizer.Commands.BruteForce;
-import ru.javarush.shevchenko.cryptoanalizer.Commands.EncodeDecode;
-import ru.javarush.shevchenko.cryptoanalizer.Commands.FileRead;
-import ru.javarush.shevchenko.cryptoanalizer.Commands.FileWrit;
+import ru.javarush.shevchenko.cryptoanalizer.Commands.*;
 import ru.javarush.shevchenko.cryptoanalizer.Interface.EncDec;
 
 
@@ -29,6 +26,7 @@ public class Starter {
 
             //String input = "нбнбарбрбащмк"; //args[1] нбнбарбрбащмк   мама папа шли
             String input = FileRead.fileReader(args[1]); // args[1]
+            String fileDictonary = args[4]; // file name Dictionary
 
 
             //System.out.println(Constans.ALPHABET.length);
@@ -41,13 +39,11 @@ public class Starter {
             } else if (type == TaskType.DECODE) {
                 result = encodeDecode.encdec(input);
             } else if (type == TaskType.BRUTE_FORCE) {
-                var hacker = new BruteForce();
+                var dictionary= FillDictionary.filDictonary(fileDictonary);
+                var hacker = new BruteForce(dictionary);
                 var resultList = hacker.hack(input);
                 result = resultList.toString();
                 //resultList.forEach(System.out::println); // output of txt
-            }
-            else if (type==TaskType.FREQUENCY){
-
             }
             else {
                 throw new AppException("invalid parameters");
