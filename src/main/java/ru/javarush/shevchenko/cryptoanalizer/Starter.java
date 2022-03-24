@@ -3,7 +3,7 @@ package ru.javarush.shevchenko.cryptoanalizer;
 import ru.javarush.shevchenko.cryptoanalizer.Commands.*;
 import ru.javarush.shevchenko.cryptoanalizer.Interface.EncDec;
 
-
+// start by parametrs in edit config or cmd: decode in.txt out.txt 15 dictonary.txt
 
 
 public class Starter {

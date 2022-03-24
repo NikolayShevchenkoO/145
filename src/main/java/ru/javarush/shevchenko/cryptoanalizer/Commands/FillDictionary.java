@@ -1,7 +1,6 @@
 package ru.javarush.shevchenko.cryptoanalizer.Commands;
 
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 
 public class FillDictionary {
